@@ -1,29 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const categoryController = require('../controllers/category.controller');
+const authMiddleware = require('../middleware/auth.middleware');
+const adminMiddleware = require('../middleware/admin.middleware');
 
-// GET /api/categories - Obtener todas las categorías
-router.get('/', (req, res) => {
-  res.send('Listado de todas las categorías (temporal)');
-});
+// GET /api/categories - Obtener todas las categorías (público)
+router.get('/', categoryController.getAllCategories);
 
-// GET /api/categories/:id - Obtener una categoría específica
-router.get('/:id', (req, res) => {
-  res.send(`Información de la categoría con ID: ${req.params.id} (temporal)`);
-});
+// GET /api/categories/:id - Obtener una categoría específica (público)
+router.get('/:id', categoryController.getCategoryById);
 
-// POST /api/categories - Crear una nueva categoría (requiere autenticación de administrador)
-router.post('/', (req, res) => {
-  res.send('Crear una nueva categoría (temporal)');
-});
+// POST /api/categories - Crear una nueva categoría (requiere autenticación y rol de administrador)
+router.post('/', authMiddleware, adminMiddleware, categoryController.createCategory);
 
-// PUT /api/categories/:id - Actualizar una categoría existente (requiere autenticación de administrador)
-router.put('/:id', (req, res) => {
-  res.send(`Actualizar la categoría con ID: ${req.params.id} (temporal)`);
-});
+// PUT /api/categories/:id - Actualizar una categoría existente (requiere autenticación y rol de administrador)
+router.put('/:id', authMiddleware, adminMiddleware, categoryController.updateCategory);
 
-// DELETE /api/categories/:id - Eliminar una categoría (requiere autenticación de administrador)
-router.delete('/:id', (req, res) => {
-  res.send(`Eliminar la categoría con ID: ${req.params.id} (temporal)`);
-});
+// DELETE /api/categories/:id - Eliminar una categoría (requiere autenticación y rol de administrador)
+router.delete('/:id', authMiddleware, adminMiddleware, categoryController.deleteCategory);
 
 module.exports = router;
