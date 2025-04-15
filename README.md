@@ -21,4 +21,8 @@ node server.js
          mongodb://localhost:27017/
          mongodb://127.0.0.1:27017/
 
+# Angular
 
+ng --version  =>  19.2.7
+
+ng serve -o
