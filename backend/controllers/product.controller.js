@@ -39,7 +39,7 @@ exports.updateProduct = async (req, res) => {
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true } // new: true para devolver el documento actualizado
+            { new: true, runValidators: true } 
         );
         if (!updatedProduct) {
             return res.status(404).json({ message: 'Producto no encontrado' });
