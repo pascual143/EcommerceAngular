@@ -1,1 +1,10 @@
 <h2>Catálogo de Productos</h2>
+
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products$ | async">
+    <img [src]="product.image || 'https://via.placeholder.com/150/888888/FFFFFF?Text=Sin+Imagen'" alt="{{ product.name }}">
+    <h3>{{ product.name }}</h3>
+    <p class="price">${{ product.price }}</p>
+    <button>Añadir al carrito</button>
+  </div>
+</div>
