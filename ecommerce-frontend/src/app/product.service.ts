@@ -16,14 +16,13 @@ interface Product {
 }
 
 @Injectable({
-  providedIn: 'root' // Esto hace que el servicio sea un singleton a nivel de la aplicación
+  providedIn: 'root',
 })
 export class ProductService {
-  private apiUrl = 'http://localhost:3000/api/products'; // La URL de tu API backend
+  private apiUrl = 'https://orange-lamp-rp6gx6pq9qq2px4q-3000.app.github.dev/api/products';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  // Función para obtener todos los productos desde la API
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }

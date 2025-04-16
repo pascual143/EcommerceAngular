@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common'; // Importa AsyncPipe
+import { AsyncPipe, NgFor } from '@angular/common'; // Importa NgFor
 
 interface Product {
   _id: string;
@@ -18,7 +18,7 @@ interface Product {
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [AsyncPipe], // Añade AsyncPipe a los imports
+  imports: [AsyncPipe, NgFor], // Añade NgFor a los imports
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
 })
